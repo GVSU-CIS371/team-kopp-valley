@@ -1,0 +1,132 @@
+<!doctype html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="stylesheet" href="src/style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Launchpad - User Profile</title>
+	</head>
+
+	<body>
+
+		<div id="app">
+
+			<div class="container">
+
+				<nav>
+					<div class="nav-links">
+						<img src="public/launchpad.png">
+						<li><a href="index.html"><i class="fa fa-home"></i>Home</a></li>
+						<li><button type="button" onclick="NewProj()"><i class="fa fa-book"></i>New Project</button></li>
+						<li><a href="projects.html"><i class="fa fa-address-book-o"></i>Profile</a></li>
+					</div>
+
+					<div class="bottom-nav">
+						<li>User:</li>
+						<button type="button"><a class="logout">Log Out</a></button>
+					</div>
+
+				</nav>
+
+				<main>
+					<form id="add-project" class="popup">
+						<div id="popup-content">
+							<label for="project"><b>Project Name<span class="star">*</span></b></label>
+							<input type="text" placeholder="Launchpad" name="project" required>
+
+							<label for="description"><b>Project Description<span class="star">*</span></b></label>
+							<input id="proj-desc" type="text" placeholder="Displays your projects for other users to see" name="description" required>
+
+							<label for="tags"><b>Tags</b></label>
+							<input type="text" placeholder="Educational, game, etc." name="tags">
+
+							<label for="github"><b>GitHub Link</b></label>
+							<input type="text" placeholder="https://github.com/..." name="github">
+
+							<label for="demo"><b>Demo Link</b></label>
+							<input type="text" placeholder="https://demo.com/..." name="demo">
+
+							<div id="form-buttons">
+								<button type="submit" class="submit-button">Add Project</button>
+								<button type="button" class="cancel-button" onclick="NewProj()">Cancel</button>
+							</div>
+						</div>
+					</form>
+
+					<h1>User's Profile</h1>
+
+					<div id="profile">
+
+						<h1 id="namebubble">HK</h1>
+
+						<h2>Name</h2>
+						<h2>user</h2>
+						<br>
+						<br>
+						<hr>
+						<br>
+						<br>
+
+						<div id="user-proj">
+
+							<div id="proj-header">
+								<h3>Project Name</h3>							
+								<select id="proj-privacy">
+									<option value="private">Private</option>
+									<option value="public">Public</option>
+								</select>
+							</div>
+							<p>Testing Project</p>
+							<h3>Project Description</h3>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sodales elit et euismod sollicitudin. Sed euismod dictum egestas. Cras lacus ipsum, dignissim quis diam vel, lobortis pellentesque justo. Donec imperdiet purus non ex egestas tempor. Pellentesque ut molestie ligula, vel laoreet nisl. Vestibulum vel erat id lacus varius blandit id a enim. Ut turpis risus, mollis sit amet odio ac, suscipit venenatis elit. Phasellus pulvinar ultricies nisi, eget accumsan orci posuere non. Phasellus convallis, lectus vel dignissim sagittis, eros nulla luctus magna, eget dignissim ex ante eu turpis. Praesent id porttitor tortor.
+
+							Nulla maximus dignissim sapien. Donec at nibh vitae diam pellentesque varius. Quisque vitae orci porta, cursus mi eu, venenatis augue. Praesent volutpat tristique placerat. Mauris vitae feugiat mauris, vel sodales urna. Mauris vehicula lacus vel commodo consectetur. Vivamus id scelerisque libero. Aliquam in libero eu tellus sollicitudin venenatis laoreet sed metus. Praesent posuere dictum mauris id pellentesque. Sed fringilla fermentum dolor non elementum. Praesent accumsan ante eget sapien rhoncus laoreet. Vestibulum varius non ante vitae mattis. Curabitur iaculis augue aliquam, semper tortor facilisis, pretium mauris. Suspendisse in vehicula neque.</p>
+
+							<div class="proj-tags">
+								<h3>Tags</h3>
+								<p>App</p>
+								<p>Game</p>
+							</div>
+							
+							<h3>GitHub Link</h3>
+							<a href="https://google.com" target="_blank">githublink.com</a>
+
+							<h3>Demo Link</h3>
+							<a href="https://google.com" target="_blank">demolink.com</a>
+
+							<hr>
+
+						</div>
+
+					</div>
+
+				</main>
+
+			</div>
+
+
+    </div>
+
+	<script type="module" src="/src/main.js"></script>
+	<script>
+		function NewProj() {
+			const addproject = document.getElementById("add-project");
+			const currentDisplay = window.getComputedStyle(addproject).display;
+
+			if (currentDisplay === "none") {
+				addproject.style.display = "flex";
+			} else {
+				addproject.style.display = "none";
+			}
+		}
+	</script>
+  </body>
+
+</html>
