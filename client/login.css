@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Squada+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: Nunito, sans-serif;
+    text-align: center;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background-image: linear-gradient(#051f38 0%, #051f38 100%);
+}
+
+body video {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    opacity: 0.2;
+    z-index: -1;
+    
+}
+
+#login-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#login-container {
+    background-color: #051f38;
+    border-radius: 20px;
+    padding: 4rem;
+}
+
+#login-container img {
+    max-width: 312px;
+    max-height: 208px;
+}
+
+body img {
+    padding-bottom: 1rem;
+}
+
+i {
+    color: #36e2f0;
+}
+
+body form input {
+    padding: 10px;
+}
+
+input {
+    border-radius: 5px;
+    margin: 0.5rem;
+    border: none;
+    background-color: #CBD5E1;
+    color: #000000;
+}
+
+input:focus {
+    outline: none;
+}
+
+button {
+    margin-top: 2rem;
+    background-color: #1F2937;
+    padding: 3px;
+    color: #ffffff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-family: Squada One, sans-serif;
+    padding: 10px 20px;
+    border: hidden;
+}
+
+button:hover {
+    cursor: pointer;
+    filter: brightness(70%);
+    text-decoration: underline;
+}
