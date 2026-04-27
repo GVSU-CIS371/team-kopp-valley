@@ -7,7 +7,7 @@
           <ul class="nav-links">
             <li><a href="#" @click="router.push('/discover')"><i class="fa fa-home"></i> Home</a></li>
             <li><button type="button" @click="showForm = true"><i class="fa fa-book"></i> New Project</button></li>
-            <li><a @click="router.push('/profile')"><i class="fa fa-address-book-o"></i> Profile</a></li>
+            <li><a href="#" @click="router.push('/profile')"><i class="fa fa-address-book-o"></i> Profile</a></li>
           </ul>
         </div>
         <div class="bottom-nav">
