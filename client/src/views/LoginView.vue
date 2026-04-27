@@ -55,7 +55,7 @@
     error.value = ''
     try {
       if (isRegistering.value) {
-        const res = await fetch('http://localhost:3000/auth/register', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -74,7 +74,7 @@
       } else {
         const userCredential = await signInWithEmailAndPassword(auth, email.value, password.value)
         const token = await userCredential.user.getIdToken()
-        const res = await fetch('http://localhost:3000/auth/me', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/me`, {
           headers: { 'Authorization': `Bearer ${token}` }
         })
         const data = await res.json()

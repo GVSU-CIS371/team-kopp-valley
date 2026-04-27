@@ -117,7 +117,7 @@
     const user = auth.currentUser
     if (!user) return
     const token = await user.getIdToken()
-    const res = await fetch('http://localhost:3000/projects/me', {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/projects/me`, {
       headers: { 'Authorization': `Bearer ${token}` }
     })
     projects.value = await res.json()
@@ -129,7 +129,7 @@
     const token = await user.getIdToken()
 
     if (editingProject.value) {
-      await fetch(`http://localhost:3000/projects/${editingProject.value.id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/projects/${editingProject.value.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -142,7 +142,7 @@
       })
       editingProject.value = null
     } else {
-      await fetch('http://localhost:3000/projects', {
+      await fetch(`${import.meta.env.VITE_API_URL}/projects`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -161,7 +161,7 @@
     const user = auth.currentUser
     if (!user) return
     const token = await user.getIdToken()
-    await fetch(`http://localhost:3000/projects/${project.id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/projects/${project.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -182,7 +182,7 @@
     const user = auth.currentUser
     if (!user) return
     const token = await user.getIdToken()
-    await fetch(`http://localhost:3000/projects/${id}`, {
+    await fetch(`${import.meta.env.VITE_API_URL}/projects/${id}`, {
       method: 'DELETE',
       headers: { 'Authorization': `Bearer ${token}` }
     })
@@ -210,7 +210,7 @@
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         const token = await user.getIdToken()
-        const res = await fetch('http://localhost:3000/auth/me', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/auth/me`, {
           headers: { 'Authorization': `Bearer ${token}` }
         })
         const data = await res.json()

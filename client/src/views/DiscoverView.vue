@@ -109,7 +109,7 @@
   })
 
   const fetchProjects = async () => {
-    const res = await fetch('http://localhost:3000/projects')
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/projects`)
     projects.value = await res.json()
   }
 
@@ -123,7 +123,7 @@
     if (!user) return
     const token = await user.getIdToken()
 
-    await fetch('http://localhost:3000/projects', {
+    await fetch(`${import.meta.env.VITE_API_URL}/projects`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
