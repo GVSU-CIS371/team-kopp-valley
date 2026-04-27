@@ -18,4 +18,14 @@ const register = async (req, res) => {
     }
 };
 
-module.exports = { register };
+const getMe = async (req, res) => {
+    try {
+        const doc = await db.collection('users').doc(req.user.uid).get()
+        if (!doc.exists) return res.status(404).json({ error: 'User not found' })
+        res.status(200).json({ id: doc.id, ...doc.data() })
+    } catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+
+module.exports = { register, getMe }

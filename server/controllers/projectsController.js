@@ -1,17 +1,23 @@
 const { db } = require('../firebase')
 
 const createProject = async function (req, res) {
-    const { title, content, tags, links } = req.body;
+    const { title, content, tags, githubUrl, demoUrl } = req.body;
     const uid = req.user.uid;
 
     try {
+        const userDoc = await db.collection('users').doc(uid).get();
+        const userData = userDoc.data();
+
         const projectRef = await db.collection('projects').add({
             title,
             content,
             tags,
             status: 'draft',
-            links: links || [],
+            githubUrl: githubUrl || null,
+            demoUrl: demoUrl || null,
             userId: uid,
+            username: userData.username,
+            name: userData.name,
             createdAt: new Date()
         });
         res.status(201).json({ message: 'Project created successfully', projectId: projectRef.id });
@@ -24,7 +30,8 @@ const getProjects = async function (req, res) {
     try {
         const snapshot = await db.collection('projects')
             .where('status', '==', 'published')
-            .get();
+            .orderBy('createdAt', 'desc')
+            .get()
 
         const projects = snapshot.docs.map(doc => ({
             id: doc.id,
@@ -71,7 +78,7 @@ const getUserProjects = async (req, res) => {
 };
 
 const updateProject = async (req, res) => {
-    const { title, content, tags, links, status } = req.body;
+    const { title, content, tags, githubUrl, demoUrl, status } = req.body;
     const uid = req.user.uid;
 
     try {
@@ -89,7 +96,8 @@ const updateProject = async (req, res) => {
             title,
             content,
             tags,
-            links,
+            githubUrl: githubUrl || null,
+            demoUrl: demoUrl || null,
             status
         });
 
